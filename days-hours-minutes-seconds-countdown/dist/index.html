@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Days/hours/minutes/seconds countdown</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  
+  <div id="background">
+    <img src="image.png" alt="background" />
+  </div><br><br><br><br><br><br><br><br><br><br><br><br>
+  <!-- Countdown Information -->
+  <div id="overlay">
+    <h1>Days until I see my love ❤️</h1>
+    <p id="target-date"></p>
+  </div>
+
+  <!-- Script section -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+  <script src="./script.js"></script>
+
+  <script>
+    // Set the date you're counting down to
+    var targetDate = new Date("Oct 11, 2024 00:00:00").getTime();
+    document.getElementById("target-date").textContent = "Thu Oct 11th • 12:00 AM";
+
+    // Update the countdown every 1 second
+    var x = setInterval(function() {
+
+      var now = new Date().getTime();
+      var distance = targetDate - now;
+
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the result
+      document.getElementById("js-days").innerHTML = days;
+      document.getElementById("js-hours").innerHTML = hours;
+      document.getElementById("js-minutes").innerHTML = minutes;
+      document.getElementById("js-seconds").innerHTML = seconds;
+
+      // If the countdown is finished
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("js-countdown").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+  </script>
+  <!-- Background section with countdown -->
+  <section class="wrapper">
+    <section id="countdown-container" class="countdown-container">
+      <article id="js-countdown" class="countdown">
+        <!-- Days -->
+        <section id="js-days" class="number"></section>
+        <!-- Separator -->
+        <section id="js-separator" class="separator">:</section>
+        <!-- Hours -->
+        <section id="js-hours" class="number"></section>
+        <!-- Separator -->
+        <section id="js-separator" class="separator">:</section>
+        <!-- Minutes -->
+        <section id="js-minutes" class="number"></section>
+        <!-- Separator -->
+        <section id="js-separator" class="separator">:</section>
+        <!-- Seconds -->
+        <section id="js-seconds" class="number"></section>
+      </article>
+    </section>
+  </section>
+
+</body>
+</html>

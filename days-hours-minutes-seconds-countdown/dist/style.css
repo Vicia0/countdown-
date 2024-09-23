@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+.wrapper {
+  position: relative;
+  height: 12em;
+}
+
+.countdown-container {
+  font-family: Montserrat, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+}
+
+.countdown {
+  display: flex;
+  transform-style: preserve3d;
+  perspective: 500px;
+  height: 10rem;
+  width: 64em;
+  margin: 0 auto;
+}
+.countdown.remove {
+  -webkit-animation: hide-countdown 1s cubic-bezier(0, 0.9, 0.56, 1.2) forwards;
+          animation: hide-countdown 1s cubic-bezier(0, 0.9, 0.56, 1.2) forwards;
+  overflow: hidden;
+}
+
+.number, .separator {
+  display: block;
+  color: rgb(32, 146, 190);
+  height: 10rem;
+  font-size: 10rem;
+  position: relative;
+  line-height: 10rem;
+  text-align: center;
+  width: 100%;
+}
+
+.separator {
+  margin: 0;
+  width: 2rem;
+}
+
+.new, .old, .current {
+  color: rgb(32, 146, 190);
+  position: absolute;
+  border-radius: 1rem;
+  height: 10rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.new {
+  -webkit-animation: show-new 0.4s cubic-bezier(0, 0.9, 0.5, 1.2) forwards;
+          animation: show-new 0.4s cubic-bezier(0, 0.9, 0.5, 1.2) forwards;
+}
+
+.old {
+  -webkit-animation: hide-old 2s cubic-bezier(0, 0.9, 0.56, 1.2) forwards;
+          animation: hide-old 2s cubic-bezier(0, 0.9, 0.56, 1.2) forwards;
+}
+
+.countdown section {
+  position: relative;
+}
+
+#js-days:after, #js-hours:after, #js-minutes:after, #js-seconds:after {
+  content: "DAYS";
+  position: absolute;
+  text-align: center;
+  left: 0;
+  right: 0;
+  bottom: -80px;
+  font-size: 12px;
+}
+#js-hours:after {
+  content: "HOURS";
+}
+#js-minutes:after {
+  content: "MINUTES";
+}
+#js-seconds:after {
+  content: "SECONDS";
+}
+@-webkit-keyframes hide-countdown {
+  to {
+    height: 0;
+    overflow: hidden;
+  }
+}
+@keyframes hide-countdown {
+  to {
+    height: 0;
+    overflow: hidden;
+  }
+}
+@-webkit-keyframes show-new {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(-2rem) scale(0.8) rotateX(-20deg);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+@keyframes show-new {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(-2rem) scale(0.8) rotateX(-20deg);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}
+@-webkit-keyframes hide-old {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(-5rem) scale(0.5) rotateX(-75deg);
+  }
+}
+@keyframes hide-old {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(-5rem) scale(0.5) rotateX(-75deg);
+  }
+}
+
+#countdown-container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#background img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+#overlay {
+  background-color: rgba(0, 0, 0, 0.4); /* Transparent overlay */
+  padding: 20px;
+  text-align: center;
+  color: white;
+  border-radius: 15px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+#target-date {
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+#countdown {
+  display: flex;
+  justify-content: center;
+}
+
+.time-box {
+  margin: 0 15px;
+}
+
+.time-box span {
+  font-size: 3rem;
+  display: block;
+}
+
+.time-box p {
+  font-size: 1rem;
+}
